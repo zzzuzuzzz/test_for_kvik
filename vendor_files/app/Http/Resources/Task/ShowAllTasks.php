@@ -15,7 +15,7 @@ class ShowAllTasks extends JsonResource
             'description' => $this->description,
             'status_id' => $this->status_id,
             'start' => $this->date_create,
-            'end' => $this->dead_line,
+            'dead_line' => $this->dead_line,
         ];
     }
 }

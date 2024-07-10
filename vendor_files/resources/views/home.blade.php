@@ -8,18 +8,18 @@
             <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
-                        <h3 class="profile-username text-center">Nina Mcintire</h3>
-                        <p class="text-muted text-center">Software Engineer</p>
+                        <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                        <p class="text-muted text-center">{{ $user->email }}</p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Followers</b> <a class="float-right">1,322</a>
+                                <b>Всего групп</b> <a class="float-right">{{ count($group_list) }}</a>
                             </li>
-                            <li class="list-group-item">
-                                <b>Following</b> <a class="float-right">543</a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Friends</b> <a class="float-right">13,287</a>
-                            </li>
+{{--                            <li class="list-group-item">--}}
+{{--                                <b>Группы, где вы админ</b> <a class="float-right">543</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="list-group-item">--}}
+{{--                                <b>Группы, где вы пользователь</b> <a class="float-right">13,287</a>--}}
+{{--                            </li>--}}
                         </ul>
 
                         <form action="{{ route('logout') }}" method="POST" class="text-center">
@@ -37,6 +37,15 @@
                                 <div class="post">
                                     <a class="btn btn-lg btn-primary w-25" href="{{ route('search') }}">Вступить в группу</a>
                                     <a class="btn btn-lg btn-info w-25" href="{{ route('premiumPreview') }}">Создать группу</a>
+                                </div>
+                                <div class="post">
+                                @foreach($group_list as $group)
+                                        @if($group->role == 'admin')
+                                            <a class="btn btn-lg btn-primary w-25" href="http://localhost:5173/admin/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                        @else
+                                            <a class="btn btn-lg btn-primary w-25" href="http://localhost:5173/{{ $group->group_id }}">{{ $group->group_name }}</a>
+                                        @endif
+                                @endforeach
                                 </div>
                             </div>
                         </div>
