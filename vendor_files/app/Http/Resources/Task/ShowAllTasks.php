@@ -13,9 +13,11 @@ class ShowAllTasks extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'status_id' => $this->status_id,
+            'backgroundColor' => $this->status_id,
+            'borderColor' => $this->status_id,
             'start' => $this->date_create,
-            'dead_line' => $this->dead_line,
+            'end' => $this->dead_line,
+            'allDay' => $this->allDay,
         ];
     }
 }

@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required|string',
             'start' => 'required',
-            'dead_line' => 'required',
+            'end' => 'required',
         ];
     }
 }

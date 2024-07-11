@@ -12,6 +12,12 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, $task_id) {
         $date = $request->validated();
-        Task::find($task_id)->update(['date_create' => date('Y-m-d', strtotime($date['start']) + 86400)]);
+        if (!isset($date['end'])) {
+          $date['end'] = $date['start'];
+        }
+        Task::find($task_id)->update([
+            'date_create' => $date['start'],
+            'dead_line' => $date['end']
+        ]);
     }
 }

@@ -22,7 +22,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'start' => 'required'
+            'start' => 'nullable|string',
+            'end' => 'nullable|string'
         ];
     }
 }

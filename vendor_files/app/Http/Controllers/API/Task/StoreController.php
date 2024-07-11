@@ -16,7 +16,7 @@ class StoreController extends Controller
             'description' => $date['description'],
             'status_id' => 1,
             'date_create' => $date['start'],
-            'dead_line' => $date['dead_line'],
+            'dead_line' => $date['end'],
             'group_id' => $group_id
         ]);
         return $task_id;
